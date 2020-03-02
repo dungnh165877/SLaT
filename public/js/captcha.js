@@ -7,7 +7,7 @@ $(document).ready(function() {
 $(document).on('click', '#submit', function(event) {
 	if ($("#divGenerateRandomValues").text() != $("input.captcha").val()) {
 		event.preventDefault();
-		$("<div class='alert alert-danger'>Captcha don't match. Please fill again!!!</div>").insertAfter(".form-captcha");
+		$("<div class='alert alert-danger'>Captcha don't match. Please enter again!!!</div>").insertAfter(".form-captcha");
 		var captcha = makeCaptcha(5);
 		$("#divGenerateRandomValues").text(captcha);
 		$("input.captcha").val("");

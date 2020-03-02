@@ -20,7 +20,7 @@
                     <form method="POST" id="signup-form" class="signup-form">
                         <h2 class="form-title">Create account</h2>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="name" id="name" placeholder="Your ID (MSSV)" autocomplete="off" />
+                            <input type="text" class="form-input" name="name" id="name" placeholder="Username or MSSV" autocomplete="off" />
                         </div>
                         <div class="form-group">
                             <input type="email" class="form-input" name="email" id="email" placeholder="Your Email" autocomplete="off"/>
@@ -44,13 +44,12 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="alert alert-danger">okasdokasodkasodokaskod</div> -->
                         <div class="form-group">
                             <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up"/>
                         </div>
                     </form>
                     <p class="loginhere">
-                        Have already an account ? <a href="#" class="loginhere-link">Login here</a>
+                        Have already an account ? <a href="login" class="loginhere-link">Login here</a>
                     </p>
                 </div>
             </div>
