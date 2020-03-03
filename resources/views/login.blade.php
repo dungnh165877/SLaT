@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>SLaT - Register</title>
+    <title>SLaT - Login</title>
     <!-- Font Icon -->
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -14,17 +14,17 @@
 </head>
 <body>
 <div class="main">
-    <section class="signup">
+    <section class="signin">
         <div class="container">
-            <div class="signup-content">
-                <form method="POST" id="signup-form" class="signup-form">
+            <div class="signin-content">
+                <form method="POST" id="signin-form" class="signin-form">
                     <h2 class="form-title">Login</h2>
                     <div class="form-group">
                         <input type="text" class="form-input" name="name" id="name" placeholder="Username or MSSV" autocomplete="off" />
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-input" name="password" id="password" placeholder="Password" autocomplete="off"/>
-                        <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+                        <input type="password" class="form-input" name="password" id="password" placeholder="Password" autocomplete="off"/>
+                        <span toggle="#password" class="zmdi zmdi-eye-off field-icon toggle-password"></span>
                     </div>
                     <div class="form-inline form-group form-captcha">
                         <div class="row">
@@ -39,11 +39,13 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up"/>
+                        <input type="submit" name="submit" id="submit" class="form-submit btn-sign-in" value="Sign in"/>
                     </div>
                 </form>
                 <p class="loginhere">
                     Do you already have an account ? <a href="register" class="loginhere-link">Register here</a>
+                    <br>
+                    <a href="forgot-password" class="forgot-herer mb-2">Forgot password?</a>
                 </p>
             </div>
         </div>

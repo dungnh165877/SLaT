@@ -7,10 +7,13 @@ $(document).ready(function() {
 $(document).on('click', '#submit', function(event) {
 	if ($("#divGenerateRandomValues").text() != $("input.captcha").val()) {
 		event.preventDefault();
-		$("<div class='alert alert-danger'>Captcha don't match. Please enter again!!!</div>").insertAfter(".form-captcha");
+		$(".alert-captcha").remove();
+		$("<div class='alert alert-danger alert-captcha'>Captcha don't match !</div>").insertAfter(".form-captcha");
 		var captcha = makeCaptcha(5);
 		$("#divGenerateRandomValues").text(captcha);
 		$("input.captcha").val("");
+	} else {
+		$("#signup-form").submit();
 	}
 });
 
