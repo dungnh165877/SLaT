@@ -18,14 +18,26 @@
         <div class="container">
             <div class="signin-content">
                 <form method="POST" id="signin-form" class="signin-form">
+                    @csrf
                     <h2 class="form-title">Login</h2>
+                    @if (session('login-error'))
+                        <div class="alert alert-danger">
+                            {{ session('login-error') }}
+                        </div>
+                    @endif
                     <div class="form-group">
-                        <input type="text" class="form-input" name="name" id="name" placeholder="Username or MSSV" autocomplete="off" />
+                        <input type="text" class="form-input" name="username" id="username" placeholder="Username or MSSV" autocomplete="off" />
                     </div>
+                    @error('username')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                     <div class="form-group">
                         <input type="password" class="form-input" name="password" id="password" placeholder="Password" autocomplete="off"/>
                         <span toggle="#password" class="zmdi zmdi-eye-off field-icon toggle-password"></span>
                     </div>
+                    @error('password')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                     <div class="form-inline form-group form-captcha">
                         <div class="row">
                             <div class="col-12 col-xl-6 mb-2">

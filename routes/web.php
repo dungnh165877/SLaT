@@ -15,18 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('login', function() {
-	return view('login');
-});
+Route::get('login', 'UserController@getLogin');
+Route::get('register', 'UserController@getRegist');
+Route::get('reset-password', 'UserController@resetPassword');
 
-Route::get('register', function() {
-	return view('register');
-});
 Route::get('forgot-password', function() {
     return view('forgotPassword');
 });
 
 Route::post('register', 'UserController@register');
+Route::post('login', 'UserController@login');
 Route::post('forgot-password', 'UserController@forgotPassword');
-Route::get('reset-password', 'UserController@resetPassword');
 Route::post('new-pass', 'UserController@newPassword');

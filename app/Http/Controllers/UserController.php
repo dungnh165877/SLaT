@@ -10,6 +10,13 @@ use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
+
+    public function getRegist(){
+        return view('register');
+    }
+    public function getLogin(){
+        return view('login');
+    }
     public function register(Request $request){
         $validatedData = $request->validate([
             'username' => 'required|unique:users|min:8',
@@ -33,6 +40,24 @@ class UserController extends Controller
             return redirect()->to('login');
         } else {
             return redirect()->to('register');
+        }
+    }
+
+    public function login(Request $request){
+        $validatedData = $request->validate([
+            'username' => 'required',
+            'password' => 'required|min:6'
+        ]);
+
+        $user = User::select('*')
+            ->where('username', '=', $request->username)
+            ->where('password', '=', bcrypt($request->password))
+            ->get();
+//        dd($user);
+        if ($user) {
+            return redirect('/');
+        } else {
+            return redirect('login')->with('login-error', 'Username or password incorrect!');
         }
     }
 
