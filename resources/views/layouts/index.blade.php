@@ -21,9 +21,9 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="lib/js/jquery.js"></script>
-    <script type="text/javascript" src="lib/js/popper.min.js"></script>
-    <script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
+{{--    <script type="text/javascript" src="lib/js/jquery.js"></script>--}}
+{{--    <script type="text/javascript" src="lib/js/popper.min.js"></script>--}}
+{{--    <script type="text/javascript" src="lib/js/bootstrap.min.js"></script>--}}
     <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

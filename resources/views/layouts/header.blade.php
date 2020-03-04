@@ -48,7 +48,7 @@
                             <div class="btn-group">
                                 <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                    class="p-0 btn">
-                                    <img width="42" class="rounded-circle" src="assets/images/avatars/12.jpg"
+                                    <img width="42" class="rounded-circle" src="images/avatars/{{ session('user')->avatar }}"
                                          alt="">
                                     <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                 </a>
@@ -65,10 +65,10 @@
                         </div>
                         <div class="widget-content-left  ml-3 header-user-info">
                             <div class="widget-heading">
-                                20166827
+                                {{ session('user')->username }}
                             </div>
                             <div class="widget-subheading">
-                                Đoàn Đại Tiến
+                                {{ session('user')->fullname }}
                             </div>
                         </div>
                         <div class="widget-content-right header-user-info ml-3">
