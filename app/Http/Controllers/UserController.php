@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Model\User;
 use App\Model\ResetPassword;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -37,7 +39,7 @@ class UserController extends Controller
         $sv = User::create($sv_new);
 
         if ( $sv ) {
-            return redirect()->to('login');
+            return redirect('login')->with('login-success', 'Register successful, please login into system!');
         } else {
             return redirect()->to('register');
         }
@@ -48,17 +50,14 @@ class UserController extends Controller
             'username' => 'required',
             'password' => 'required|min:6'
         ]);
-
-        $user = User::select('*')
-            ->where('username', '=', $request->username)
-            ->where('password', '=', bcrypt($request->password))
-            ->get();
-//        dd($user);
-        if ($user) {
-            return redirect('/');
-        } else {
-            return redirect('login')->with('login-error', 'Username or password incorrect!');
+        $user = User::where('username', $request->username)
+            ->first();
+        if ($user && Hash::check($request->password, $user->password)) {
+            session(['role' => $user->role]);
+            return redirect('/')->with('role', $user->role);
         }
+        return redirect('login')->with('login-error', 'Username or password incorrect!');
+
     }
 
     public function forgotPassword(Request $request) {
@@ -66,7 +65,13 @@ class UserController extends Controller
         $email = $request->email;
         $result = User::where('email', $email )->first();
         if($result){
-            $resetPassword = ResetPassword::firstOrCreate(['email'=>$email, 'token'=>Str::random(60)]);
+            $resetPassword = ResetPassword::firstOrCreate(
+                [
+                    'email'=>$email,
+                    'token'=>Str::random(60),
+                    'time_expire' => date('Y-m-d H:i:s', strtotime("+5 hours"))
+                ]
+            );
 
             $token = ResetPassword::where('email', $email)->first();
 
@@ -86,8 +91,9 @@ class UserController extends Controller
         $result = ResetPassword::where('token', $request->token)->first();
 
         $data['info'] = $result->token;
+        $now = strtotime("now");
 
-        if($result){
+        if($result && $now < strtotime($result->time_expire)){
             return view('newPass', $data);
         } else {
             echo 'This link is expired';
@@ -114,7 +120,7 @@ class UserController extends Controller
             // Delete token
             ResetPassword::where('token', $request->token)->delete();
 
-            return redirect()->to('login');
+            return redirect('login')->with('reset-password-success', 'Reset password successful, please login into system!');
         } else {
             echo "Password doesn't match";
         }

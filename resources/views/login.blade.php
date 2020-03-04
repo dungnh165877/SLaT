@@ -25,6 +25,16 @@
                             {{ session('login-error') }}
                         </div>
                     @endif
+                    @if (session('login-success'))
+                        <div class="alert alert-success">
+                            {{ session('login-success') }}
+                        </div>
+                    @endif
+                    @if (session('reset-password-success'))
+                        <div class="alert alert-success">
+                            {{ session('reset-password-success') }}
+                        </div>
+                    @endif
                     <div class="form-group">
                         <input type="text" class="form-input" name="username" id="username" placeholder="Username or MSSV" autocomplete="off" />
                     </div>

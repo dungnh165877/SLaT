@@ -395,4 +395,10 @@ input[type=checkbox]:not(old):checked + label > span:before {
   cursor: pointer;
 }
 
+#submit-div {
+  display: block;
+  text-align: center;
+  padding: 0!important;
+}
+
 /*# sourceMappingURL=style.css.map */

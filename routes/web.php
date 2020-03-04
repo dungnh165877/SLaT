@@ -12,8 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('sv');
+})->name('slat');
 
 Route::get('login', 'UserController@getLogin');
 Route::get('register', 'UserController@getRegist');
