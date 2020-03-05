@@ -148,6 +148,100 @@
                     </ul>
                 </li>
                 @endif
+                @if(session('role') == 'lecturer' ||session('role') == 'student')
+                <li class="app-sidebar__heading">Thông tin các lớp học</li>
+                <li>
+                    <a href="#">
+                        <i class="metismenu-icon pe-7s-study"></i>
+                        Thông tin lớp học
+                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="elements-buttons-standard.html">
+                                <i class="metismenu-icon"></i>
+                                Văn hóa kinh doanh
+                            </a>
+                        </li>
+                        <li>
+                            <a href="elements-dropdowns.html">
+                                <i class="metismenu-icon"></i>
+                                Quản trị kinh doanh
+                            </a>
+                        </li>
+                        <li>
+                            <a href="elements-dropdowns.html">
+                                <i class="metismenu-icon"></i>
+                                Hệ điều hành
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="metismenu-icon pe-7s-chat"></i>
+                        Nhóm chat
+                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="elements-buttons-standard.html">
+                                <i class="metismenu-icon"></i>
+                                Văn hóa kinh doanh
+                            </a>
+                        </li>
+                        <li>
+                            <a href="elements-dropdowns.html">
+                                <i class="metismenu-icon"></i>
+                                Quản trị kinh doanh
+                            </a>
+                        </li>
+                        <li>
+                            <a href="elements-dropdowns.html">
+                                <i class="metismenu-icon"></i>
+                                Hệ điều hành
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+                @if(session('role') == 'lecturer' || session('role') == 'student'|| session('role') == 'expert')
+                <li class="app-sidebar__heading">Chức năng</li>
+                @if(session('role') == 'lecturer')
+                <li>
+                    <a href="forms-controls.html">
+                        <i class="metismenu-icon pe-7s-help1">
+                        </i>Đánh giá bài giảng
+                    </a>
+                </li>
+                <li>
+                    <a href="forms-controls.html">
+                        <i class="metismenu-icon pe-7s-help1">
+                        </i>Bài giảng được đánh giá
+                    </a>
+                </li>
+                <li>
+                    <a href="forms-controls.html">
+                        <i class="metismenu-icon pe-7s-help1">
+                        </i>Tư vấn học tập
+                    </a>
+                </li>
+                @endif
+                @if(session('role') == 'student')
+                <li>
+                    <a href="forms-controls.html">
+                        <i class="metismenu-icon pe-7s-help1">
+                        </i>Gửi câu hỏi
+                    </a>
+                </li>
+                @endif
+                <li>
+                    <a href="forms-layouts.html">
+                        <i class="metismenu-icon pe-7s-note">
+                        </i>Ghi chú
+                    </a>
+                </li>
+                @endif
                 <li class="app-sidebar__heading">Quản lý thông tin cá nhân</li>
                 <li>
                     <a href="dashboard-boxes.html">

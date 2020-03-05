@@ -54,7 +54,8 @@ class UserController extends Controller
             ->first();
         if ($user && Hash::check($request->password, $user->password)) {
             session(['role' => $user->role]);
-            return redirect()->route('slat')->with('user', $user);
+            session(['user' => $user]);
+            return redirect()->route('slat');
         }
         return redirect('login')->with('login-error', 'Username or password incorrect!');
 

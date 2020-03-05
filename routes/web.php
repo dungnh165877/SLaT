@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('sv');
-})->name('slat');
+Route::group(['middleware' => 'checksession'], function () {
+    Route::get('/', function () {
+        return view('sv');
+    })->name('slat');
+});
 
 Route::get('login', 'UserController@getLogin');
 Route::get('register', 'UserController@getRegist');
@@ -27,3 +29,9 @@ Route::post('register', 'UserController@register');
 Route::post('login', 'UserController@login');
 Route::post('forgot-password', 'UserController@forgotPassword');
 Route::post('new-pass', 'UserController@newPassword');
+
+Route::get('logout', function(){
+    session()->forget('role');
+    session()->forget('user');
+    return redirect()->to('login');
+});

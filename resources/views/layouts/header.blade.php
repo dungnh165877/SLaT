@@ -59,7 +59,7 @@
                                     <h6 tabindex="-1" class="dropdown-header">Header</h6>
                                     <button type="button" tabindex="0" class="dropdown-item">Actions</button>
                                     <div tabindex="-1" class="dropdown-divider"></div>
-                                    <button type="button" tabindex="0" class="dropdown-item">Dividers</button>
+                                    <button type="button" tabindex="0" class="dropdown-item" onclick="window.location='/logout'">Logout</button>
                                 </div>
                             </div>
                         </div>
@@ -68,7 +68,7 @@
                                 {{ session('user')->username }}
                             </div>
                             <div class="widget-subheading">
-                                {{ session('user')->fullname }}
+                                Đoàn Đại Tiến
                             </div>
                         </div>
                         <div class="widget-content-right header-user-info ml-3">

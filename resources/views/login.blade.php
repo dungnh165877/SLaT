@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="icon" href="images/logo-icon.png">
     <title>SLaT - Login</title>
     <!-- Font Icon -->
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
@@ -20,6 +20,11 @@
                 <form method="POST" id="signin-form" class="signin-form">
                     @csrf
                     <h2 class="form-title">Login</h2>
+                    @if (session('session-error'))
+                        <div class="alert alert-danger">
+                            {{ session('session-error') }}
+                        </div>
+                    @endif
                     @if (session('login-error'))
                         <div class="alert alert-danger">
                             {{ session('login-error') }}
