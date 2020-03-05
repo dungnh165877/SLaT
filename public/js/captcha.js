@@ -5,6 +5,7 @@ $(document).ready(function() {
 });
 
 $(document).on('click', '#submit', function(event) {
+	$('.alert-danger').remove();
 	if ($("#divGenerateRandomValues").text() != $("input.captcha").val()) {
 		event.preventDefault();
 		$(".alert-captcha").remove();

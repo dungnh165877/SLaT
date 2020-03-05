@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="images/logo-icon.png">
     <title>SLaT - @yield('title')</title>
+    <link rel="stylesheet" href="css/font.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
@@ -15,15 +16,18 @@
         <div class="app-main">
             @include('layouts.navLeft')
             <div class="app-main__outer">
-                @section('content')
-                    This is the master sidebar.
-                @show
+                <div class="app-main__inner">
+                    @section('content')
+
+                    @show
+                </div>
             </div>
         </div>
     </div>
-{{--    <script type="text/javascript" src="lib/js/jquery.js"></script>--}}
+    <script type="text/javascript" src="lib/js/jquery.js"></script>
 {{--    <script type="text/javascript" src="lib/js/popper.min.js"></script>--}}
 {{--    <script type="text/javascript" src="lib/js/bootstrap.min.js"></script>--}}
     <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/activeMenu.js"></script>
 </body>
 </html>

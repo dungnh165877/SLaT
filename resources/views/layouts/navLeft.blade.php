@@ -35,14 +35,14 @@
             <ul class="vertical-nav-menu">
                 <li class="app-sidebar__heading">Trang chủ</li>
                 <li>
-                    <a href="{{route('slat')}}" class="mm-active">
+                    <a href="{{route('slat')}}">
                         <i class="metismenu-icon pe-7s-home"></i>
                         Thông tin
                     </a>
                 </li>
                 @if(session('role') == 'admin')
                     <li>
-                        <a href="">
+                        <a href="/">
                             <i class="metismenu-icon pe-7s-graph3"></i>
                             Thống kê
                         </a>
@@ -244,7 +244,7 @@
                 @endif
                 <li class="app-sidebar__heading">Quản lý thông tin cá nhân</li>
                 <li>
-                    <a href="dashboard-boxes.html">
+                    <a href="/info">
                         <i class="metismenu-icon pe-7s-user"></i>
                         Thông tin cá nhân
                     </a>

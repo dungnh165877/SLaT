@@ -12,9 +12,16 @@
 */
 
 Route::group(['middleware' => 'checksession'], function () {
-    Route::get('/', function () {
-        return view('sv');
-    })->name('slat');
+
+    Route::group(['middleware' => 'checkinfo'], function () {
+        Route::get('/', function () {
+            return view('home');
+        })->name('slat');
+    });
+
+    Route::get('info', function () {
+        return view('info');
+    })->name('info');
 });
 
 Route::get('login', 'UserController@getLogin');

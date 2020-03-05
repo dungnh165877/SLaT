@@ -1,0 +1,112 @@
+.avatar-user {
+    width: 100%;
+    height: 150px;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.avatar-user .image-user {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 3px solid #5d5a5a;
+    border-radius: 50%;
+}
+.avatar-user .update-image {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.avatar-user .update-image label {
+    border-radius: 50%;
+}
+
+.cashier-info .cashier-img {
+    margin: auto;
+    position: relative;
+}
+
+.reset-password {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    margin-left: 5px;
+    display: none;
+}
+
+.cashier-img .image-main {
+    position: relative;
+    width: 60%;
+    height: auto;
+    text-align: center;
+    margin: auto;
+}
+
+.cashier-info .cashier-img img.image-user {
+    width: 100%;
+    max-height: 60%;
+    border-radius: 7px;
+}
+
+.cashier-img .image-main .update-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    display: none;
+}
+
+.update-image input.input-update {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+    display: block;
+}
+
+
+.update-image .input-update+label {
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    height: 100%;
+    background-color: #dadada8c;
+    overflow: hidden;
+    color: #333;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.update-image .input-update+label:hover {
+    opacity: 1;
+    transition: 0.4s;
+}
+
+.update-image span.hover-update {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.info-detail {
+    width: 100%;
+    border: 1px solid gray;
+    padding: 5px 10px;
+}

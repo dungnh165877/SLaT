@@ -1,12 +1,13 @@
 @extends('layouts.index')
-
-@section('sidebar')
+@section('title', 'Trang chủ')
+@section('content')
     @parent
 
-    <p>This is appended to the master sidebar.</p>
-    plaspdlpasldplsapdlpasdlpasldp
+
     <div class="alert alert-danger">
         {{ session('user') }}
     </div>
+
+    <h1>Trang chu</h1>
 
 @endsection

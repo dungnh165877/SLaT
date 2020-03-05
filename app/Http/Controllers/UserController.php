@@ -45,6 +45,7 @@ class UserController extends Controller
         }
     }
 
+
     public function login(Request $request){
         $validatedData = $request->validate([
             'username' => 'required',
