@@ -7,8 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="images/logo-icon.png">
     <title>SLaT - @yield('title')</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <link rel="stylesheet" href="css/font.css">
     <link rel="stylesheet" href="css/main.css">
+    @section('css')
+
+    @show
 </head>
 <body>
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
@@ -25,9 +30,13 @@
         </div>
     </div>
     <script type="text/javascript" src="lib/js/jquery.js"></script>
-{{--    <script type="text/javascript" src="lib/js/popper.min.js"></script>--}}
-{{--    <script type="text/javascript" src="lib/js/bootstrap.min.js"></script>--}}
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/activeMenu.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    @section('script')
+
+    @show
 </body>
 </html>

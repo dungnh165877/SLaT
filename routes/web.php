@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Model\User;
 
 Route::group(['middleware' => 'checksession'], function () {
 
@@ -22,6 +23,14 @@ Route::group(['middleware' => 'checksession'], function () {
     Route::get('info', function () {
         return view('info');
     })->name('info');
+
+    Route::post('/updateAvt', 'UserController@updateAvt');
+    Route::post('/updateEmail', 'UserController@updateEmail');
+});
+
+Route::get('test', function(){
+   $a = User::Test();
+   return $a;
 });
 
 Route::get('login', 'UserController@getLogin');

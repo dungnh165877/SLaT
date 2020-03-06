@@ -1,3 +1,7 @@
+* {
+    padding: 0;
+    margin: 0;
+}
 .avatar-user {
     width: 100%;
     height: 150px;
@@ -108,5 +112,51 @@
 .info-detail {
     width: 100%;
     border: 1px solid gray;
-    padding: 5px 10px;
+    padding: 15px 10px;
+}
+
+input::placeholder, input, input#birthday {
+    font-size: 14px;
+}
+input:focus {
+    box-shadow: none!important;
+}
+select option {
+    font-size: 12px;
+}
+.avatar-update {
+    display: block;
+    text-align: center;
+}
+
+.email-edit, .email-save {
+    visibility: hidden;
+    opacity: 0;
+    display: inline-block;
+    margin-top: 4px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.email-edit:hover, .email-save:hover {
+    color: #34b734;
+}
+.info-detail {
+    cursor: pointer;
+}
+
+.info-detail:hover .email-edit, .info-detail:hover .email-save{
+    visibility: visible;
+    opacity: 1;
+}
+
+.email-update {
+    width: 80%;
+    border: none;
+    border-bottom: 1px solid #ff2300;
+}
+
+.email-update:focus {
+    box-shadow: none!important;
+    outline: none;
 }

@@ -52,7 +52,7 @@ class UserController extends Controller
             'password' => 'required|min:6'
         ]);
         $user = User::where('username', $request->username)
-            ->first();
+        ->first();
         if ($user && Hash::check($request->password, $user->password)) {
             session(['role' => $user->role]);
             session(['user' => $user]);
@@ -115,7 +115,6 @@ class UserController extends Controller
         if($request->password == $request->re_password){
             // Check email with token
             $result = ResetPassword::where('token', $request->token)->first();
-//            dd($result);
             // Update new password
             User::where('email', $result->email)->update(['password'=>bcrypt($request->password)]);
 
@@ -126,6 +125,66 @@ class UserController extends Controller
         } else {
             echo "Password doesn't match";
         }
+    }
+
+    public function updateAvt(Request $request){
+        if (!$request->file('image')) {
+            return response()->json([
+                'message'   => 'Image Upload Error',
+                'uploaded_image' => '',
+                'class_name'  => 'alert-danger',
+                'status' => false
+            ]);
+        }
+        $image = $request->file('image');
+        $new_name = $this->__saveFileWithUniqueName($image);
+
+        $user = User::find(session('user.id'));
+        $user->avatar = $new_name;
+        $user->save();
+        $this->__saveSession();
+        
+        return response()->json([
+            'message'   => 'Image Upload Successfully',
+            'uploaded_image' => '<img src="/images/avatars/'.$new_name.'" class="img-thumbnail" width="300" />',
+            'class_name'  => 'alert-success',
+            'status' => true
+        ]);
+    }
+
+    public function updateEmail(Request $request){
+        $validatedData = $request->validate([
+            'email' => 'required|unique:users|regex:/^[\w.+\-]+@sis.hust.edu.vn$/'
+        ]);
+//        dd($validatedData->passes());
+        if($validatedData->fails()){
+            $user = User::find(session('user.id'));
+            $user->email = $request->email;
+            $user->save();
+            $this->__saveSession();
+            return response()->json([
+                'message'   => 'Update Email Successfully',
+                'status' => true,
+                'class_name'  => 'alert-success'
+            ]);
+        } else {
+            return response()->json([
+                'message'   => 'psladplaspdlpsad',
+                'status' => false,
+                'class_name'  => 'alert-danger'
+            ]);
+        }
+    }
+
+    private function __saveFileWithUniqueName($image) {
+        $new_name = 'avt-' . rand() . '-' . date('Y-m-d-H-i-s', strtotime("now")) . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('images/avatars'), $new_name);
+        return $new_name;
+    }
+
+    private function __saveSession(){
+        $user = User::find(session('user.id'));
+        session(['user' => $user]);
     }
 
 }

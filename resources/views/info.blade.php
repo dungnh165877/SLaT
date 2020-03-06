@@ -1,6 +1,11 @@
 @extends('layouts.index')
 @section('title', 'Thông tin cá nhân')
-<link rel="stylesheet" href="css/info.css">
+@section('css')
+    @parent
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <link rel="stylesheet" href="css/info.css">
+@endsection
+
 @section('content')
     @parent
     <div class="app-page-title">
@@ -30,9 +35,9 @@
                         <div class="card-body">
                             <form>
                                 <div class="avatar-user">
-                                    <img src="https://www.imagesjunction.com/images/img/nancy_momoland_images.jpg" alt="" class="image-user">
+                                    <img src="images/avatars/{{ session('user')->avatar }}" alt="" class="image-user" data-img="images/avatars/{{ session('user')->avatar }}">
                                     <div class="update-image">
-                                        <input type="file" name="avatar" id="input-update" class="input-update" accept="image/gif, image/jpeg, image/jpg, image/png" />
+                                        <input type="file" name="file-avatar" id="input-update" class="input-update" accept="image/gif, image/jpeg, image/jpg, image/png" />
                                         <label for="input-update">
                                             <span class="hover-update">
                                                 <i class="metismenu-icon pe-7s-camera"></i>
@@ -40,14 +45,23 @@
                                         </label>
                                     </div>
                                 </div>
+                                <div class="avatar-update" hidden="true">
+                                    <button class="mt-1 btn btn-primary btn-avatar-update">Update</button>
+                                </div>
                                 <div class="card-body">
                                     <div class="position-relative form-group">
                                         <h5 class="card-title">Username</h5>
-                                        <div class="info-detail">20166827</div>
+                                        <div class="info-detail">{{ session('user')->username }}</div>
                                     </div>
                                     <div class="position-relative form-group">
                                         <h5 class="card-title">Email</h5>
-                                        <div class="info-detail">tien.dd166827@sis.hust.edu.vn</div>
+                                        <div class="info-detail">
+                                            <span class="email-text">{{ session('user')->email }}</span>
+                                            <input type="text" value="tien.dd166827@sis.hust.edu.vn" class="email-update" hidden="true">
+                                            <i class="fas fa-pen float-right email-edit"></i>
+                                            <i class="fas fa-save float-right email-save" hidden="true"></i>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                             </form>
@@ -59,23 +73,43 @@
                         <div class="card-body">
                             <form class="">
                                 <div class="position-relative form-group">
-                                    <label for="exampleEmail" class="">Fullname</label>
-                                    <input name="email" id="exampleEmail" placeholder="with a placeholder" type="email" class="form-control">
+                                    <h5 class="card-title">Họ và tên</h5>
+                                    <input name="fullname" id="fullName" placeholder="Tên đầy đủ" type="text" class="form-control" value="{{ session('user')->fullname }}">
                                 </div>
                                 <div class="position-relative form-group">
-                                    <label for="examplePassword" class="">Class</label>
-                                    <input name="password" id="examplePassword" placeholder="password placeholder" type="password" class="form-control">
+                                    <h5 class="card-title">Lớp</h5>
+                                    <input name="class" id="class" placeholder="Lớp" type="text" class="form-control" value="{{ session('user')->class }}">
                                 </div>
-                                <div class="position-relative form-group"><label for="exampleCustomSelect" class="">Major</label><select type="select" id="exampleCustomSelect" name="customSelect" class="custom-select">
-                                        <option value="">Select</option>
-                                        <option>Value 1</option>
-                                        <option>Value 2</option>
-                                        <option>Value 3</option>
-                                        <option>Value 4</option>
-                                        <option>Value 5</option>
-                                    </select></div>
                                 <div class="position-relative form-group">
-                                    <label for="exampleCustomSelect" class="">Radios</label>
+                                    <h5 class="card-title">Khoa/Viện</h5>
+                                    <select type="select" name="major" class="custom-select custom-major">
+                                        <option value="">Khoa/Viện</option>
+                                        <option value="01">Văn phòng các chương trình quốc tế</option>
+                                        <option value="02">Viện Công nghệ Sinh học và công nghệ Thực phẩm</option>
+                                        <option value="03">Viện Công nghệ Thông tin và Truyền thông</option>
+                                        <option value="04">Viện Cơ khí</option>
+                                        <option value="05">Viện Cơ khí Động lực</option>
+                                        <option value="06">Viện Dệt may - Da giầy và Thời trang</option>
+                                        <option value="07">Viện Đào tạo liên tục</option>
+                                        <option value="08">Viện Điện</option>
+                                        <option value="09">Viện Điện tử - Viễn thông</option>
+                                        <option value="10">Viện Kinh tế & Quản lý</option>
+                                        <option value="11">Viện Kỹ thuật Hoá học</option>
+                                        <option value="12">Viện Khoa học và Công nghệ Môi trường</option>
+                                        <option value="13">Viện Khoa học và Công nghệ Nhiệt Lạnh</option>
+                                        <option value="14">Viện Khoa học và Kỹ thuật Vật liệu</option>
+                                        <option value="15">Viện Ngoại ngữ</option>
+                                        <option value="16">Viện Sư phạm Kỹ thuật</option>
+                                        <option value="17">Viện Toán ứng dụng và Tin học</option>
+                                        <option value="18">Viện Vật lý kỹ thuật</option>
+                                    </select>
+                                </div>
+                                <div class="position-relative form-group">
+                                    <h5 class="card-title">Ngày sinh</h5>
+                                    <input name="birthday" id="birthday" type="text" class="form-control" value="{{ session('user')->birthday }}">
+                                </div>
+                                <div class="position-relative form-group">
+                                    <h5 class="card-title">Giới tính</h5>
                                     <div class="position-relative form-group">
                                         <div>
                                             <div class="custom-radio custom-control">
@@ -88,7 +122,7 @@
                                     </div>
                                 </div>
 
-                                <button class="mt-1 btn btn-primary">Submit</button>
+                                <button class="mt-1 btn btn-primary">Cập nhật thông tin</button>
                             </form>
                         </div>
                     </div>
@@ -98,4 +132,9 @@
     </div>
 
 
+@endsection
+
+@section('script')
+    @parent
+    <script type="text/javascript" src="js/info.js"></script>
 @endsection
