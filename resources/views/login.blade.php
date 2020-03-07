@@ -3,14 +3,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="images/logo-icon.png">
+    <link rel="icon" href="{{ asset('images/logo-icon.png') }}">
     <title>SLaT - Login</title>
     <!-- Font Icon -->
-    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="{{ asset('fonts/material-icon/css/material-design-iconic-font.min.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
-    <link rel="stylesheet" href="lib/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/sign.css">
+    <link rel="stylesheet" href="{{ asset('lib/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/sign.css') }}">
+
 </head>
 <body>
 <div class="main">
@@ -78,10 +79,10 @@
         </div>
     </section>
 </div>
-<script type="text/javascript" src="lib/js/jquery.js"></script>
-<script type="text/javascript" src="lib/js/popper.min.js"></script>
-<script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/sign.js"></script>
-<script type="text/javascript" src="js/captcha.js"></script>
+<script type="text/javascript" src="{{ asset('lib/js/jquery.js') }}"></script>
+<script type="text/javascript" src="{{ asset('lib/js/popper.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('lib/js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/sign.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/captcha.js') }}"></script>
 </body>
 </html>

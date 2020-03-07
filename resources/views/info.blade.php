@@ -113,7 +113,7 @@
                                     <div class="position-relative form-group">
                                         <div>
                                             <div class="custom-radio custom-control">
-                                                <input type="radio" id="exampleCustomRadio" name="customRadio" class="custom-control-input"><label class="custom-control-label" for="exampleCustomRadio">Name</label>
+                                                <input type="radio" id="exampleCustomRadio" name="customRadio" class="custom-control-input"><label class="custom-control-label" for="exampleCustomRadio">Nam</label>
                                             </div>
                                             <div class="custom-radio custom-control">
                                                 <input type="radio" id="exampleCustomRadio2" name="customRadio" class="custom-control-input"><label class="custom-control-label" for="exampleCustomRadio2">Nữ</label>

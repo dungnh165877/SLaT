@@ -1,5 +1,5 @@
 @extends('layouts.index')
-@section('title', 'Trang chủ')
+@section('title', 'Ghi chú')
 @section('content')
     @parent
     <div class="app-page-title">
@@ -8,8 +8,8 @@
                 <div class="page-title-icon">
                     <i class="pe-7s-user icon-gradient bg-sunny-morning"></i>
                 </div>
-                <div>Thông báo của nhà trường
-                    <div class="page-title-subheading"> Các thông tin được cập nhật thường xuyên</div>
+                <div>Ghi chú
+                    <div class="page-title-subheading">Lưu các ghi chú cá nhân ( chức năng phụ )</div>
                 </div>
             </div>
         </div>

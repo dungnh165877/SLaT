@@ -30,7 +30,7 @@
             </button>
         </span>
     </div>
-    <div class="scrollbar-sidebar">
+    <div class="scrollbar-sidebar ps ps--active-y ps--scrolling-y">
         <div class="app-sidebar__inner">
             <ul class="vertical-nav-menu">
                 <li class="app-sidebar__heading">Trang chủ</li>
@@ -42,7 +42,7 @@
                 </li>
                 @if(session('role') == 'admin')
                     <li>
-                        <a href="/">
+                        <a href="/statistic">
                             <i class="metismenu-icon pe-7s-graph3"></i>
                             Thống kê
                         </a>
@@ -56,23 +56,23 @@
                         Quản lý bài đăng
                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                     </a>
-                    <ul>
+                    <ul class="mm-collapse">
                         @if(session('role') == 'admin')
                         <li>
-                            <a href="elements-buttons-standard.html">
+                            <a href="/list-post">
                                 <i class="metismenu-icon"></i>
                                 Danh sách bài đăng
                             </a>
                         </li>
                         @endif
                         <li>
-                            <a href="elements-dropdowns.html">
+                            <a href="/list-post-pending">
                                 <i class="metismenu-icon"></i>
                                 Danh sách bài chờ duyệt
                             </a>
                         </li>
                         <li>
-                            <a href="elements-dropdowns.html">
+                            <a href="/create-post">
                                 <i class="metismenu-icon"></i>
                                 Đăng bài mới
                             </a>
@@ -87,23 +87,23 @@
                         Quản lý thành viên
                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                     </a>
-                    <ul>
+                    <ul class="mm-collapse">
                         @if(session('role') == 'admin')
                         <li>
-                            <a href="elements-buttons-standard.html">
+                            <a href="/list-expert">
                                 <i class="metismenu-icon"></i>
                                 Danh sách chuyên gia
                             </a>
                         </li>
                         <li>
-                            <a href="elements-dropdowns.html">
+                            <a href="/list-lecturer">
                                 <i class="metismenu-icon"></i>
                                 Danh sách giảng viên
                             </a>
                         </li>
                         @endif
                         <li>
-                            <a href="elements-dropdowns.html">
+                            <a href="/list-student">
                                 <i class="metismenu-icon"></i>
                                 Danh sách sinh viên
                             </a>
@@ -118,33 +118,41 @@
                         Quản trị cơ sở tri thức
                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                     </a>
-                    <ul>
+                    <ul class="mm-collapse">
                         <li>
-                            <a href="elements-buttons-standard.html">
+                            <a href="/list-event">
                                 <i class="metismenu-icon"></i>
                                 Danh sách sự kiện
                             </a>
                         </li>
                         <li>
-                            <a href="elements-dropdowns.html">
+                            <a href="list-rule">
                                 <i class="metismenu-icon"></i>
                                 Danh sách luật suy diễn
                             </a>
                         </li>
                         @if(session('role') == 'expert')
                         <li>
-                            <a href="elements-dropdowns.html">
+                            <a href="list-rule-pending">
                                 <i class="metismenu-icon"></i>
-                                Duyệt luật suy diễn
+                                Danh sách luật suy diễn chờ duyệt
                             </a>
                         </li>
                         @endif
                         <li>
-                            <a href="elements-dropdowns.html">
+                            <a href="list-question-subject">
                                 <i class="metismenu-icon"></i>
                                 Quản trị câu hỏi cho danh mục
                             </a>
                         </li>
+                        @if(session('role') == 'expert')
+                        <li>
+                            <a href="list-subject">
+                                <i class="metismenu-icon"></i>
+                                Danh sách các môn học
+                            </a>
+                        </li>
+                        @endif
                     </ul>
                 </li>
                 @endif
@@ -156,21 +164,21 @@
                         Thông tin lớp học
                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                     </a>
-                    <ul>
+                    <ul class="mm-collapse">
                         <li>
-                            <a href="elements-buttons-standard.html">
+                            <a href="/class?code=123456">
                                 <i class="metismenu-icon"></i>
                                 Văn hóa kinh doanh
                             </a>
                         </li>
                         <li>
-                            <a href="elements-dropdowns.html">
+                            <a href="/?code=123457">
                                 <i class="metismenu-icon"></i>
                                 Quản trị kinh doanh
                             </a>
                         </li>
                         <li>
-                            <a href="elements-dropdowns.html">
+                            <a href="/class?code=123458">
                                 <i class="metismenu-icon"></i>
                                 Hệ điều hành
                             </a>
@@ -183,21 +191,21 @@
                         Nhóm chat
                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                     </a>
-                    <ul>
+                    <ul class="mm-collapse">
                         <li>
-                            <a href="elements-buttons-standard.html">
+                            <a href="/class-chat?code=123456">
                                 <i class="metismenu-icon"></i>
                                 Văn hóa kinh doanh
                             </a>
                         </li>
                         <li>
-                            <a href="elements-dropdowns.html">
+                            <a href="/class-chat?code=123457">
                                 <i class="metismenu-icon"></i>
                                 Quản trị kinh doanh
                             </a>
                         </li>
                         <li>
-                            <a href="elements-dropdowns.html">
+                            <a href="/class-chat?code=123458">
                                 <i class="metismenu-icon"></i>
                                 Hệ điều hành
                             </a>
@@ -229,14 +237,14 @@
                 @endif
                 @if(session('role') == 'student')
                 <li>
-                    <a href="forms-controls.html">
+                    <a href="/send-question">
                         <i class="metismenu-icon pe-7s-help1">
                         </i>Gửi câu hỏi
                     </a>
                 </li>
                 @endif
                 <li>
-                    <a href="forms-layouts.html">
+                    <a href="/note">
                         <i class="metismenu-icon pe-7s-note">
                         </i>Ghi chú
                     </a>
@@ -250,12 +258,18 @@
                     </a>
                 </li>
                 <li>
-                    <a href="dashboard-boxes.html">
+                    <a href="/change-pass">
                         <i class="metismenu-icon pe-7s-key"></i>
                         Đổi mật khẩu
                     </a>
                 </li>
             </ul>
+        </div>
+        <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+            <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+        </div>
+        <div class="ps__rail-y" style="top: 0px; height: 662px; right: 0px;">
+            <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 415px;"></div>
         </div>
     </div>
 </div>

@@ -17,28 +17,48 @@ class DatabaseSeeder extends Seeder
             'username' => 'admin',
             'email' => 'admin@dev.tmh.com',
             'password' => bcrypt('123456'), // password
-            'role' => 'admin'
+            'role' => 'admin',
+            'fullname' => 'Admin',
+            'birthday' => '26/08/1998',
+            'sex' => 'Nam',
+            'class' => 'CN-CNTT01',
+            'major' => 'Viện CNTT và TT'
         ]);
 
         DB::table('users')->insert([
             'username' => 'expert',
             'email' => 'doandaitien260898@gmail.com',
             'password' => bcrypt('123456'), // password
-            'role' => 'expert'
+            'role' => 'expert',
+            'fullname' => 'Chuyên gia',
+            'birthday' => '26/08/1998',
+            'sex' => 'Nam',
+            'class' => 'CN-CNTT01',
+            'major' => 'Viện CNTT và TT'
         ]);
 
         DB::table('users')->insert([
             'username' => 'lecturer',
             'email' => 'tiendd@tmh-techlab.vn',
             'password' => bcrypt('123456'), // password
-            'role' => 'lecturer'
+            'role' => 'lecturer',
+            'fullname' => 'Admin',
+            'birthday' => '26/08/1998',
+            'sex' => 'Nam',
+            'class' => 'CN-CNTT01',
+            'major' => 'Viện CNTT và TT'
         ]);
 
         DB::table('users')->insert([
             'username' => '20166827',
             'email' => 'tien.dd166827@sis.hust.edu.vn',
             'password' => bcrypt('123456'), // password
-            'role' => 'student'
+            'role' => 'student',
+            'fullname' => 'Đoàn Đại Tiến',
+            'birthday' => '26/08/1998',
+            'sex' => 'Nam',
+            'class' => 'CN-CNTT01',
+            'major' => 'Viện CNTT và TT'
         ]);
     }
 }

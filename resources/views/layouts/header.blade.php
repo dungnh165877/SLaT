@@ -68,7 +68,7 @@
                                 {{ session('user')->username }}
                             </div>
                             <div class="widget-subheading">
-                                Đoàn Đại Tiến
+                                {{ session('user')->fullname }}
                             </div>
                         </div>
                         <div class="widget-content-right header-user-info ml-3">
