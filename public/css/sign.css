@@ -401,4 +401,12 @@ input[type=checkbox]:not(old):checked + label > span:before {
   padding: 0!important;
 }
 
+.title-website {
+  font-size: 28px;
+  background: -webkit-linear-gradient(#eee, #f54242);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+
 /*# sourceMappingURL=style.css.map */

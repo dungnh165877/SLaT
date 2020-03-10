@@ -30,7 +30,7 @@
         </div>
         <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <div class="main-card mb-3 card">
                         <div class="card-body">
                             <form>
@@ -68,10 +68,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-9">
                     <div class="main-card mb-3 card">
                         <div class="card-body">
-                            <form class="">
+                            <form class="form-material">
                                 <div class="position-relative form-group">
                                     <h5 class="card-title">Họ và tên</h5>
                                     <input name="fullname" id="fullName" placeholder="Tên đầy đủ" type="text" class="form-control" value="{{ session('user')->fullname }}">
@@ -82,7 +82,7 @@
                                 </div>
                                 <div class="position-relative form-group">
                                     <h5 class="card-title">Khoa/Viện</h5>
-                                    <select type="select" name="major" class="custom-select custom-major">
+                                    <select type="select" name="major" class="custom-select custom-major form-control">
                                         <option value="">Khoa/Viện</option>
                                         <option value="01">Văn phòng các chương trình quốc tế</option>
                                         <option value="02">Viện Công nghệ Sinh học và công nghệ Thực phẩm</option>

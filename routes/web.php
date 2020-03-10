@@ -100,3 +100,5 @@ Route::get('logout', function(){
     session()->forget('user');
     return redirect()->to('login');
 });
+
+Route::get('index', 'UserController@index');

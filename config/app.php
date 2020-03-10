@@ -14,6 +14,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'urls' => env('APP_URLS', 'aDVDSES'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +53,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://laravel.slat.com'),
 
     'asset_url' => env('ASSET_URL', null),
 

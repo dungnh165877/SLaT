@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-
     public function getRegist(){
         return view('register');
     }
@@ -76,8 +75,7 @@ class UserController extends Controller
             );
 
             $token = ResetPassword::where('email', $email)->first();
-
-            $data = ['link' => 'http://laravel.slat.com/reset-password?token=' . $token->token];
+            $data = ['link' => config('app.url').'/reset-password?token=' . $token->token];
             Mail::send('email', $data , function($message) use ($email){
                 $message->from('laravel.slat@gmail.com', 'SLaT');
                 $message->to( $email, 'User in SLaT')->subject('Forgot password in Support Learning and Teaching');

@@ -19,6 +19,7 @@
                 <div class="signup-content">
                     <form method="POST" id="signup-form" class="signup-form" action="register">
                         @csrf
+                        <h1 class="title-website">Support Learning and Teaching</h1>
                         <h2 class="form-title">Create account</h2>
                         <div class="form-group">
                             <input type="text" class="form-input" name="username" id="name" placeholder="MSSV" />

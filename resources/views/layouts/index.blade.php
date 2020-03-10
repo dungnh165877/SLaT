@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="images/logo-icon.png">
     <title>SLaT - @yield('title')</title>
+    <link rel="stylesheet" href="http://eliteadmin.themedesigner.in/demos/bt4/inverse/dist/css/style.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <link rel="stylesheet" href="css/perfect-scrollbar.css">

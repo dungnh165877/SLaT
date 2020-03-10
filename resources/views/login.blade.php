@@ -20,6 +20,7 @@
             <div class="signin-content">
                 <form method="POST" id="signin-form" class="signin-form">
                     @csrf
+                    <h1 class="title-website">Support Learning and Teaching</h1>
                     <h2 class="form-title">Login</h2>
                     @if (session('session-error'))
                         <div class="alert alert-danger">
