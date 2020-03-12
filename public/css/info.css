@@ -2,11 +2,37 @@
     padding: 0;
     margin: 0;
 }
+
+.avatar-cancel {
+    position: absolute;
+    top: 110px;
+    left: 5%;
+    z-index: 99999;
+}
+
+.fullName.text-center {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.card-info {
+    font-size: 17px;
+}
+
+.card-info h6 {
+    font-size: 14px!important;
+}
+
+.card-info i.fas {
+    font-size: 17px;
+    width: 32px;
+    color: #439bf9;
+}
 .avatar-user {
     width: 100%;
     height: 150px;
     position: relative;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .avatar-user .image-user {
@@ -116,17 +142,22 @@
 }
 
 input::placeholder, input, input#birthday {
-    font-size: 14px;
+    font-size: 13px!important;
 }
 input:focus {
     box-shadow: none!important;
 }
-select option {
-    font-size: 12px;
+.custom-major {
+    font-size: 13px!important;
 }
-.avatar-update {
-    display: block;
-    text-align: center;
+.avatar-update {position: absolute;top: 110px;right: 5%;z-index: 9999;}
+
+.avatar-update button {width: 37px;height: 37px;border-radius: 50%;}
+
+.avatar-cancel button {
+    width: 37px;
+    height: 37px;
+    border-radius: 50%;
 }
 
 .email-edit, .email-save {

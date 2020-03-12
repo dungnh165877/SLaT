@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             'birthday' => '26/08/1998',
             'sex' => 'Nam',
             'class' => 'CN-CNTT01',
-            'major' => 'Viện CNTT và TT'
+            'major' => '01'
         ]);
 
         DB::table('users')->insert([
@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
             'birthday' => '26/08/1998',
             'sex' => 'Nam',
             'class' => 'CN-CNTT01',
-            'major' => 'Viện CNTT và TT'
+            'major' => '02'
         ]);
 
         DB::table('users')->insert([
@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
             'birthday' => '26/08/1998',
             'sex' => 'Nam',
             'class' => 'CN-CNTT01',
-            'major' => 'Viện CNTT và TT'
+            'major' => '03'
         ]);
 
         DB::table('users')->insert([
@@ -58,7 +58,7 @@ class DatabaseSeeder extends Seeder
             'birthday' => '26/08/1998',
             'sex' => 'Nam',
             'class' => 'CN-CNTT01',
-            'major' => 'Viện CNTT và TT'
+            'major' => '04'
         ]);
     }
 }

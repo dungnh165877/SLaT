@@ -30,7 +30,7 @@
         </div>
         <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-sm-5 col-md-4 col-lg-3">
                     <div class="main-card mb-3 card">
                         <div class="card-body">
                             <form>
@@ -43,32 +43,30 @@
                                                 <i class="metismenu-icon pe-7s-camera"></i>
                                             </span>
                                         </label>
-                                    </div>
-                                </div>
-                                <div class="avatar-update" hidden="true">
-                                    <button class="mt-1 btn btn-primary btn-avatar-update">Update</button>
-                                </div>
-                                <div class="card-body">
-                                    <div class="position-relative form-group">
-                                        <h5 class="card-title">Username</h5>
-                                        <div class="info-detail">{{ session('user')->username }}</div>
-                                    </div>
-                                    <div class="position-relative form-group">
-                                        <h5 class="card-title">Email</h5>
-                                        <div class="info-detail">
-                                            <span class="email-text">{{ session('user')->email }}</span>
-                                            <input type="text" value="tien.dd166827@sis.hust.edu.vn" class="email-update" hidden="true">
-                                            <i class="fas fa-pen float-right email-edit"></i>
-                                            <i class="fas fa-save float-right email-save" hidden="true"></i>
+                                        <div class="avatar-update" hidden="true">
+                                            <button class="mt-1 btn btn-success btn-avatar-update"><i class="fas fa-save"></i></button>
                                         </div>
-                                        
+                                        <div class="avatar-cancel" hidden="true">
+                                            <button class="mt-1 btn btn-danger btn-avatar-cancel"><i class="fas fa-undo-alt"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="fullName text-center">{{ session('user')->fullname }}</div>
+                                <div class="card-body card-info">
+                                    <div class="position-relative form-group">
+                                        <i class="fas fa-user-circle float-left mr-2"></i>
+                                        <h6>{{ session('user')->username }}</h6>
+                                    </div>
+                                    <div class="position-relative form-group">
+                                        <i class="fas fa-envelope float-left mr-2"></i>
+                                        <h6>{{ session('user')->email }}</h6>
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-9">
+                <div class="col-sm-7 col-md-8 col-lg-9">
                     <div class="main-card mb-3 card">
                         <div class="card-body">
                             <form class="form-material">
@@ -82,9 +80,10 @@
                                 </div>
                                 <div class="position-relative form-group">
                                     <h5 class="card-title">Khoa/Viện</h5>
+
                                     <select type="select" name="major" class="custom-select custom-major form-control">
                                         <option value="">Khoa/Viện</option>
-                                        <option value="01">Văn phòng các chương trình quốc tế</option>
+                                        <option value="01" selected>Văn phòng các chương trình quốc tế</option>
                                         <option value="02">Viện Công nghệ Sinh học và công nghệ Thực phẩm</option>
                                         <option value="03">Viện Công nghệ Thông tin và Truyền thông</option>
                                         <option value="04">Viện Cơ khí</option>
@@ -113,10 +112,10 @@
                                     <div class="position-relative form-group">
                                         <div>
                                             <div class="custom-radio custom-control">
-                                                <input type="radio" id="exampleCustomRadio" name="customRadio" class="custom-control-input"><label class="custom-control-label" for="exampleCustomRadio">Nam</label>
+                                                <input type="radio" id="exampleCustomRadio" name="customRadio" class="custom-control-input" {{ session('user')->sex == 'Nam' ? 'checked' : '' }}><label class="custom-control-label" for="exampleCustomRadio">Nam</label>
                                             </div>
                                             <div class="custom-radio custom-control">
-                                                <input type="radio" id="exampleCustomRadio2" name="customRadio" class="custom-control-input"><label class="custom-control-label" for="exampleCustomRadio2">Nữ</label>
+                                                <input type="radio" id="exampleCustomRadio2" name="customRadio" class="custom-control-input" {{ session('user')->sex == 'Nữ' ? 'checked' : '' }}><label class="custom-control-label" for="exampleCustomRadio2">Nữ</label>
                                             </div>
                                         </div>
                                     </div>

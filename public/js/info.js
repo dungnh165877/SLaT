@@ -36,11 +36,12 @@ $(document).on('change', '#input-update', function(event) {
     var src = $(avatar).children('img').data('img');
     
     if ($(this).val().length == 0) {
-        $(avatar).next('.avatar-update').attr('hidden', 'true');
+        $(avatar).find('.avatar-update').attr('hidden', 'true');
         $(avatar).children('img').attr('src', src);
     } else {
-        $(avatar).next('.avatar-update').removeAttr('hidden');
         $(avatar).children('img').attr('src', URL.createObjectURL($(this)[0]['files'][0]));
+        $(avatar).find('.avatar-update').removeAttr('hidden');
+        $(avatar).find('.avatar-cancel').removeAttr('hidden');
     }
 });
 
@@ -101,9 +102,20 @@ $(document).on('click', '.btn-avatar-update', function(event) {
             if (res.status) {
                 toastr.success(res.message);
                 $(".avatar-update").attr('hidden', 'true');
+                $(".avatar-cancel").attr('hidden', 'true');
             } else {
                 toastr.error('Update avatar error!!!');
             }
         }
     })
+});
+
+$(document).on('click', '.btn-avatar-cancel', function(event) {
+    event.preventDefault();
+    var avatar = $(this).parent('.avatar-cancel').parent('.update-image').parent('.avatar-user');
+
+    var src = $(avatar).children('img').data('img');
+    $(avatar).children('img').attr('src', src);
+    $(".avatar-update").attr('hidden', 'true');
+    $(".avatar-cancel").attr('hidden', 'true');
 });

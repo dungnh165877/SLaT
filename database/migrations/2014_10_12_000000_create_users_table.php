@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('sex')->nullable();
             $table->string('birthday')->nullable();
             $table->string('class')->nullable();
-            $table->string('major')->nullable();
+            $table->string('major_id')->nullable();
             $table->timestamps();
         });
     }
