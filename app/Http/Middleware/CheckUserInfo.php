@@ -18,7 +18,7 @@ class CheckUserInfo
     {
         $username = session('user')->username;
         $user = User::where('username', $username)->first();
-        if (!$user->fullname || !$user->sex || !$user->birthday || !$user->class || !$user->major) {
+        if (!$user->fullname || !$user->sex || !$user->birthday || !$user->class || !$user->major_id) {
             return redirect('info')->with('info-error', 'Please complete all information!');
         }
         return $next($request);

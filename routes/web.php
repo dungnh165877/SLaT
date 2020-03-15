@@ -11,6 +11,8 @@
 |
 */
 use App\Model\User;
+use App\Model\Major;
+use App\Model\Event;
 
 Route::group(['middleware' => 'checksession'], function () {
 
@@ -40,7 +42,8 @@ Route::group(['middleware' => 'checksession'], function () {
             return view('addPost');
         });
         Route::get('list-event', function () {
-            return view('listEvent');
+            $events = Event::all();
+            return view('listEvent', ['events' => $events]);
         });
         Route::get('list-expert', function () {
             return view('listExpert');
@@ -69,7 +72,8 @@ Route::group(['middleware' => 'checksession'], function () {
     });
 
     Route::get('info', function () {
-        return view('info');
+        $majors = Major::all();
+        return view('info', ['majors' => $majors]);
     })->name('info');
 
     Route::post('/updateAvt', 'UserController@updateAvt');

@@ -141,7 +141,7 @@ class UserController extends Controller
         $user->avatar = $new_name;
         $user->save();
         $this->__saveSession();
-        
+
         return response()->json([
             'message'   => 'Image Upload Successfully',
             'uploaded_image' => '<img src="/images/avatars/'.$new_name.'" class="img-thumbnail" width="300" />',
@@ -150,28 +150,36 @@ class UserController extends Controller
         ]);
     }
 
-    public function updateEmail(Request $request){
-        $validatedData = $request->validate([
-            'email' => 'required|unique:users|regex:/^[\w.+\-]+@sis.hust.edu.vn$/'
-        ]);
-//        dd($validatedData->passes());
-        if($validatedData->fails()){
-            $user = User::find(session('user.id'));
-            $user->email = $request->email;
-            $user->save();
-            $this->__saveSession();
+    public function updateInfo(Request $request){
+        $fullName = $request->input('fullName');
+        $class = $request->input('class');
+        $major = $request->input('major');
+        $birthday = $request->input('birthday');
+        $sex = $request->input('sex');
+
+        $user = User::find(session('user.id'));
+        $user->fullname = $fullName;
+        $user->class = $class;
+        $user->major_id = $major;
+        $user->birthday = $birthday;
+        $user->sex = $sex;
+        $res = $user->save();
+        $this->__saveSession();
+
+        if ($res) {
             return response()->json([
-                'message'   => 'Update Email Successfully',
-                'status' => true,
-                'class_name'  => 'alert-success'
+                'message'   => 'Update Info Successfully !!!',
+                'class_name'  => 'alert-success',
+                'status' => true
             ]);
         } else {
             return response()->json([
-                'message'   => 'psladplaspdlpsad',
-                'status' => false,
-                'class_name'  => 'alert-danger'
+                'message'   => 'Update Info Error !!!',
+                'class_name'  => 'alert-danger',
+                'status' => false
             ]);
         }
+
     }
 
     private function __saveFileWithUniqueName($image) {

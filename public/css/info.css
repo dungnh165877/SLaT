@@ -21,6 +21,11 @@
 
 .card-info h6 {
     font-size: 14px!important;
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    overflow: hidden;
 }
 
 .card-info i.fas {
@@ -190,4 +195,8 @@ input:focus {
 .email-update:focus {
     box-shadow: none!important;
     outline: none;
+}
+
+.tooltip {
+    font-size: 12px;
 }

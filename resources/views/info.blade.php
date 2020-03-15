@@ -59,7 +59,7 @@
                                     </div>
                                     <div class="position-relative form-group">
                                         <i class="fas fa-envelope float-left mr-2"></i>
-                                        <h6>{{ session('user')->email }}</h6>
+                                        <h6 data-toggle="tooltip" title="{{ session('user')->email }}">{{ session('user')->email }}</h6>
                                     </div>
                                 </div>
                             </form>
@@ -72,56 +72,43 @@
                             <form class="form-material">
                                 <div class="position-relative form-group">
                                     <h5 class="card-title">Họ và tên</h5>
-                                    <input name="fullname" id="fullName" placeholder="Tên đầy đủ" type="text" class="form-control" value="{{ session('user')->fullname }}">
+                                    <input name="fullname" id="fullName" data-data="{{ session('user')->fullname }}" placeholder="Tên đầy đủ" type="text" class="form-control" value="{{ session('user')->fullname }}">
                                 </div>
                                 <div class="position-relative form-group">
                                     <h5 class="card-title">Lớp</h5>
-                                    <input name="class" id="class" placeholder="Lớp" type="text" class="form-control" value="{{ session('user')->class }}">
+                                    <input name="class" id="class" data-data="{{ session('user')->class }}" placeholder="Lớp" type="text" class="form-control" value="{{ session('user')->class }}">
                                 </div>
                                 <div class="position-relative form-group">
                                     <h5 class="card-title">Khoa/Viện</h5>
 
-                                    <select type="select" name="major" class="custom-select custom-major form-control">
-                                        <option value="">Khoa/Viện</option>
-                                        <option value="01" selected>Văn phòng các chương trình quốc tế</option>
-                                        <option value="02">Viện Công nghệ Sinh học và công nghệ Thực phẩm</option>
-                                        <option value="03">Viện Công nghệ Thông tin và Truyền thông</option>
-                                        <option value="04">Viện Cơ khí</option>
-                                        <option value="05">Viện Cơ khí Động lực</option>
-                                        <option value="06">Viện Dệt may - Da giầy và Thời trang</option>
-                                        <option value="07">Viện Đào tạo liên tục</option>
-                                        <option value="08">Viện Điện</option>
-                                        <option value="09">Viện Điện tử - Viễn thông</option>
-                                        <option value="10">Viện Kinh tế & Quản lý</option>
-                                        <option value="11">Viện Kỹ thuật Hoá học</option>
-                                        <option value="12">Viện Khoa học và Công nghệ Môi trường</option>
-                                        <option value="13">Viện Khoa học và Công nghệ Nhiệt Lạnh</option>
-                                        <option value="14">Viện Khoa học và Kỹ thuật Vật liệu</option>
-                                        <option value="15">Viện Ngoại ngữ</option>
-                                        <option value="16">Viện Sư phạm Kỹ thuật</option>
-                                        <option value="17">Viện Toán ứng dụng và Tin học</option>
-                                        <option value="18">Viện Vật lý kỹ thuật</option>
+                                    <select type="select" name="major" class="custom-select custom-major form-control" data-data="{{ session('user')->major_id }}">
+                                        <option value="00" {{ session('user')->major_id == '' ? 'selected' : '' }} >Khoa/Viện</option>
+                                        @foreach ($majors as $major)
+                                            <option value="{{ $major->id }}" {{ session('user')->major_id == $major->id ? 'selected' : '' }}>{{ $major->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="position-relative form-group">
                                     <h5 class="card-title">Ngày sinh</h5>
-                                    <input name="birthday" id="birthday" type="text" class="form-control" value="{{ session('user')->birthday }}">
+                                    <input name="birthday" id="birthday" data-data="{{ session('user')->birthday }}" type="text" class="form-control" value="{{ session('user')->birthday }}">
                                 </div>
                                 <div class="position-relative form-group">
                                     <h5 class="card-title">Giới tính</h5>
-                                    <div class="position-relative form-group">
+                                    <div class="position-relative form-group form-sex" data-data="{{ session('user')->sex }}">
                                         <div>
                                             <div class="custom-radio custom-control">
-                                                <input type="radio" id="exampleCustomRadio" name="customRadio" class="custom-control-input" {{ session('user')->sex == 'Nam' ? 'checked' : '' }}><label class="custom-control-label" for="exampleCustomRadio">Nam</label>
+                                                <input type="radio" id="exampleCustomRadio" name="customSex" class="custom-control-input" {{ session('user')->sex == 'Nam' ? 'checked' : '' }}>
+                                                <label class="custom-control-label" for="exampleCustomRadio">Nam</label>
                                             </div>
                                             <div class="custom-radio custom-control">
-                                                <input type="radio" id="exampleCustomRadio2" name="customRadio" class="custom-control-input" {{ session('user')->sex == 'Nữ' ? 'checked' : '' }}><label class="custom-control-label" for="exampleCustomRadio2">Nữ</label>
+                                                <input type="radio" id="exampleCustomRadio2" name="customSex" class="custom-control-input" {{ session('user')->sex == 'Nữ' ? 'checked' : '' }}>
+                                                <label class="custom-control-label" for="exampleCustomRadio2">Nữ</label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <button class="mt-1 btn btn-primary">Cập nhật thông tin</button>
+                                <button class="mt-1 btn btn-primary btn-update-info" disabled>Cập nhật thông tin</button>
                             </form>
                         </div>
                     </div>

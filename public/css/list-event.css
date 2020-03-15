@@ -1,0 +1,115 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+i.fas.fa-times {
+    color: #C70021;
+    cursor: pointer;
+}
+
+i.fas.fa-times:hover {
+    color: #e1304d;
+}
+
+i.fas.fa-check {
+    color: #00894F;
+    cursor: pointer;
+    margin-right: 13px;
+}
+
+i.fas.fa-check:hover {
+    color: #0b5737;
+}
+
+i.fas.fa-trash-alt {
+    cursor: pointer;
+    color: #CC0134;
+}
+
+i.fas.fa-trash-alt:hover {
+    color: #f60441;
+}
+
+i.fas.fa-pencil-alt {color: #2F90B2;margin-right: 13px;cursor: pointer;}
+
+i.fas.fa-pencil-alt:hover {
+    color: #124759;
+}
+
+input.form-control.input-sm:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.clear-filter {
+    font-size: 18px;
+    font-weight: 700;
+    background: -webkit-linear-gradient(#eee, #f54242);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    cursor: pointer;
+}
+
+.col-search {}
+
+i.pe-7s-search.toggle-search {
+	font-size: 18px;
+	font-weight: 700;
+	background: -webkit-linear-gradient(#eee, #f54242);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	text-align: center;
+	cursor: pointer;
+}
+
+.styled-checkbox {
+	position: absolute;
+	opacity: 0;
+}
+.styled-checkbox + label {
+	position: relative;
+	cursor: pointer;
+	padding: 0px;
+	margin-top: 10px;
+}
+.styled-checkbox + label:before {
+	content: '';
+	margin-right: 8px;
+	display: inline-block;
+	vertical-align: text-top;
+	width: 18px;
+	height: 18px;
+	background: white;
+	border: 1px solid black;
+}
+.styled-checkbox:hover + label:before {
+	background: #f35429;
+}
+.styled-checkbox:focus + label:before {
+	box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+}
+.styled-checkbox:checked + label:before {
+	background: #f35429;
+}
+.styled-checkbox:disabled + label {
+	color: #b8b8b8;
+	cursor: auto;
+}
+.styled-checkbox:disabled + label:before {
+	box-shadow: none;
+	background: #ddd;
+}
+.styled-checkbox:checked + label:after {
+	content: '';
+	position: absolute;
+	left: 4px;
+	top: 9px;
+	background: white;
+	width: 2px;
+	height: 2px;
+	box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
