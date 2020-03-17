@@ -68,3 +68,21 @@ $(document).on('click', '.btn-save', function(event) {
 	$(div_content).find('td:nth-child(3)').text(content_event);
 	$(div_edit).remove();
 });
+
+$(document).on('click', '.td-checkbox, i.fas.fa-trash-alt', function(event) {
+	event.stopPropagation();
+});
+
+$(document).on('change', '.styled-checkbox', function(event) {
+	var number = $(".event-checkbox:checked").length;
+	if (number > 0) {
+		$(".btn-delete-events").removeAttr('disabled');
+	} else {
+		$(".btn-delete-events").attr('disabled', true);
+	}
+});
+
+$(document).on('change', '.checkbox-all', function(event) {
+	event.preventDefault();
+	
+});

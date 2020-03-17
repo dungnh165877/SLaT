@@ -3,6 +3,10 @@
 	margin: 0;
 }
 
+.btn-delete-events {
+    font-size: 12px;
+}
+
 i.fas.fa-times {
     color: #C70021;
     cursor: pointer;
@@ -15,7 +19,7 @@ i.fas.fa-times:hover {
 i.fas.fa-check {
     color: #00894F;
     cursor: pointer;
-    margin-right: 13px;
+    margin-right: 18px;
 }
 
 i.fas.fa-check:hover {
@@ -76,7 +80,7 @@ i.pe-7s-search.toggle-search {
 }
 .styled-checkbox + label:before {
 	content: '';
-	margin-right: 8px;
+	margin-right: 0px;
 	display: inline-block;
 	vertical-align: text-top;
 	width: 18px;
