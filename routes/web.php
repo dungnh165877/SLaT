@@ -41,10 +41,11 @@ Route::group(['middleware' => 'checksession'], function () {
         Route::get('create-post', function () {
             return view('addPost');
         });
-        Route::get('list-event', function () {
-            $events = Event::all();
-            return view('listEvent', ['events' => $events]);
-        });
+        Route::get('list-event', 'EventController@index');
+        Route::get('list-event/fetch-event', 'EventController@fetchEvent');
+        Route::post('update-event', 'EventController@updateEvent');
+        Route::post('delete-many-event', 'EventController@deleteManyEvent');
+        Route::post('delete-event', 'EventController@deleteEvent');
         Route::get('list-expert', function () {
             return view('listExpert');
         });

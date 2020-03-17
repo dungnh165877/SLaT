@@ -2,7 +2,6 @@
 @section('title', 'Thông tin cá nhân')
 @section('css')
     @parent
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel="stylesheet" href="css/info.css">
 @endsection
 
