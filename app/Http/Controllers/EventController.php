@@ -24,22 +24,31 @@ class EventController extends Controller
     public function updateEvent(Request $request) {
         if (!$request->content || !$request->name) {
             return response()->json([
-                'message'   => 'Name Or Content required!!!',
+                'message'   => 'Tên sự kiện hoặc nội dung là bắt buộc !!!',
                 'status' => false
             ]);
         }
         $event = Event::find($request->id_event);
+        if ($event->name != $request->name) {
+            $event_exists = Event::where('name', $request->name);
+            if ($event_exists) {
+                return response()->json([
+                    'message'   => 'Tên các sự kiện không được giống nhau !!!',
+                    'status' => false
+                ]);
+            }
+        }
         $event->name = $request->name;
         $event->content = $request->content;
         $res = $event->save();
         if ($res) {
             return response()->json([
-                'message'   => 'Update Event Successfully !!!',
+                'message'   => 'Cập nhật sự kiện thành công !!!',
                 'status' => true
             ]);
         } else {
             return response()->json([
-                'message'   => 'Update Event Error !!!',
+                'message'   => 'Cập nhật sự kiện thất bại !!!',
                 'status' => false
             ]);
         }
@@ -61,12 +70,12 @@ class EventController extends Controller
         }
         if ($number == count($request->arr_event_id)) {
             return response()->json([
-                'message'   => 'Delete Event Successfully !!!',
+                'message'   => 'Xóa các sự kiện thành công !!!',
                 'status' => true
             ]);
         } else {
             return response()->json([
-                'message'   => 'Delete Event Error !!!',
+                'message'   => 'Xóa các sự kiện thất bại !!!',
                 'status' => false
             ]);
         }
@@ -75,19 +84,19 @@ class EventController extends Controller
     public function deleteEvent(Request $request){
         if (!$request->id_event) {
             return response()->json([
-                'message'   => 'Wrong!!! Sorry',
+                'message'   => 'Lỗi !!!',
                 'status' => false
             ]);
         }
         $event = Event::find($request->id_event);
         if ($event->delete()){
             return response()->json([
-                'message'   => 'Delete Event Successfully !!!',
+                'message'   => 'Xóa sự kiện thành công !!!',
                 'status' => true
             ]);
         } else {
             return response()->json([
-                'message'   => 'Delete Event Error !!!',
+                'message'   => 'Xóa sự kiện thất bại !!!',
                 'status' => false
             ]);
         }

@@ -23,12 +23,12 @@ $(document).on('click', '.row-content', function(event) {
 	+ id
 	+ "</th>"
 	+ "<td width='15%'>"
-	+ "<input type='text' class='form-control input-sm' value='"
+	+ "<input type='text' class='form-control input-sm input-event' value='"
 	+ name_event
 	+ "'>"
 	+ "</td>"
 	+ "<td width='60%'>"
-	+ "<input type='text' class='form-control input-sm' value='"
+	+ "<input type='text' class='form-control input-sm input-event' value='"
 	+ content_event
 	+ "'>"
 	+ "</td>"
@@ -182,6 +182,17 @@ $(document).on('click', '.pagination a', function(event){
 
 $(document).on('click', '.btn-save-event', function(e) {
 	var event_edit = $(this).parent('td').parent('.row-edit-content');
+	updateEvent(event_edit);
+});
+
+$(document).on('keyup', '.input-event', function(event) {
+	if (event.keyCode == 13) {
+		var event_edit = $(this).parent('td').parent('.row-edit-content');
+		updateEvent(event_edit);
+	}
+});
+
+function updateEvent(event_edit){
 	var event = $(event_edit).next('.row-content');
 	var id_event = $(event_edit).data('event');
 	var name_event_new = $(event_edit).find('td:nth-child(2)').children('input').val();
@@ -208,9 +219,8 @@ $(document).on('click', '.btn-save-event', function(e) {
 			$(event).removeAttr('hidden');
 			$(event_edit).remove();
 		}
-	})
-	
-});
+	});
+}
 
 function fetch_events(page)
 {
