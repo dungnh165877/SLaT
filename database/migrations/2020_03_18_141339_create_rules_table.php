@@ -15,9 +15,11 @@ class CreateRulesTable extends Migration
     {
         Schema::create('rules', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name')->nullable(false)->unique();
             $table->string('event')->nullable(false);
             $table->string('action')->nullable(false);
-            $table->float('citiation_flow')->nullable(false);
+            $table->float('citiation_flow', 3, 2)->nullable(false);
+            $table->tinyInteger('active');
         });
     }
 
