@@ -16,10 +16,10 @@
         <tr class="row-search">
             <th width="5%">*</th>
             <td width="15%">
-                <input type="text" class="form-control input-sm">
+                <input type="text" class="form-control input-sm search-event-name" value="{{ $name }}">
             </td>
             <td width="65%">
-                <input type="text" class="form-control input-sm">
+                <input type="text" class="form-control input-sm search-event-content" value="{{ $content }}">
             </td>
             <td width="5%" class="text-center">
                 <input class="styled-checkbox checkbox-all" id="styled-checkbox-all" type="checkbox" value="value1">

@@ -3,6 +3,18 @@
 	margin: 0;
 }
 
+.form-control-line input:focus,.form-control-line textarea:focus {
+	box-shadow: none;
+}
+
+input.input-name, .input-content {
+    font-size: 13px;
+}
+
+.input-content {
+    resize: none;
+}
+
 .btn-delete-events {
     font-size: 12px;
 }

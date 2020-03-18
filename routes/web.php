@@ -42,7 +42,8 @@ Route::group(['middleware' => 'checksession'], function () {
             return view('addPost');
         });
         Route::get('list-event', 'EventController@index');
-        Route::get('list-event/fetch-event', 'EventController@fetchEvent');
+        Route::get('list-event/search-event', 'EventController@searchEvent');
+        Route::post('create-event', 'EventController@createEvent');
         Route::post('update-event', 'EventController@updateEvent');
         Route::post('delete-many-event', 'EventController@deleteManyEvent');
         Route::post('delete-event', 'EventController@deleteEvent');
@@ -107,3 +108,6 @@ Route::get('logout', function(){
 });
 
 Route::get('index', 'UserController@index');
+Route::get('test', function(){
+    return view('test');
+});

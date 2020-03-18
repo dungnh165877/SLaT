@@ -139,7 +139,7 @@ $(document).on('click', '.btn-delete-events', function(event) {
 		function(){
 			alertify.error('Cancel');
 		}
-	);
+	).set('labels', {ok:'OK'});
 });
 
 $(document).on('click', '.fa-delete-event', function(event) {
@@ -177,7 +177,9 @@ $(document).on('click', '.fa-delete-event', function(event) {
 $(document).on('click', '.pagination a', function(event){
 	event.preventDefault();
 	var page = $(this).attr('href').split('page=')[1];
-	fetch_events(page);
+	var content = $(".search-event-content").val();
+	var name = $(".search-event-name").val();
+	search_events(page, content, name);
 });
 
 $(document).on('click', '.btn-save-event', function(e) {
@@ -222,14 +224,96 @@ function updateEvent(event_edit){
 	});
 }
 
-function fetch_events(page)
+function search_events(page, content, name)
 {
 	$.ajax({
-		url:"/list-event/fetch-event?page="+page,
+		url:"/list-event/search-event?page="+page+"&content="+content+"&name="+name,
 		success:function(data)
 		{
 			$('.table-event').html(data);
-			// console.log(data);
 		}
-	});
+	})
 }
+
+$(document).on('keyup', '.search-event-name, .search-event-content', function(){
+	if (event.keyCode == 13) {
+		var content = $(".search-event-content").val();
+		var name = $(".search-event-name").val();
+		var page = 1;
+		search_events(page, content, name);
+	}
+});
+
+$(document).on('click', '.btn-add-event', function(event) {
+	var template = "<form class='form-control-line'>"
+		+ "<div class='alert alert-danger'>"
+		+ "<h6 class='alert-heading'>Chú ý!</h6><hr>"
+		+ "<span><i class='fas fa-ban mr-1'></i>Các tên sự kiện không được trùng nhau</span><br>"
+		+ "<span><i class='fas fa-ban mr-1'></i>Sự kiện tích cực phải đặt tên bắt đầu bằng chữ cái 'b'</span><br>"
+		+ "<span><i class='fas fa-ban mr-1'></i>Sự kiện tiêu cực phải đặt tên bắt đầu bằng chữ cái 'c'</span>"
+		+ "</div>"
+		+ "<div class='position-relative form-group'>"
+		+ "<h5 class='card-title'>Name</h5>"
+		+ "<input name='name' placeholder='Tên sự kiện' type='text' class='form-control input-name' autocomplete='off'>"
+		+ "</div>"
+		+ "<div class='position-relative form-group'>"
+		+ "<h5 class='card-title'>Content</h5>"
+		+ "<textarea class='form-control input-content' rows='5' placeholder='Nội dung sự kiện' autocomplete='off'></textarea>"
+		+ "</div>"
+		+ "</form>";
+	var title = "Thêm sự kiện mới";
+	alertify.confirm(title, template,
+		function(){
+			var self = this;
+			var name = $(".input-name").val();
+			var content = $(".input-content").val();
+			if (name == '') {
+				$('.input-name').addClass('form-control-warning');
+				$(".input-name").parent('.position-relative').addClass('has-warning');
+				$("<div class='form-control-feedback'>Trường này là bắt buộc!!</div>").insertAfter('.input-name');
+			}
+			if (content == '') {
+				$('.input-content').addClass('form-control-warning');
+				$(".input-content").parent('.position-relative').addClass('has-warning');
+				$("<div class='form-control-feedback'>Trường này là bắt buộc!!</div>").insertAfter('.input-content');
+			}
+			if (name != '' && content != '') {
+				$.ajax({
+					url: '/create-event',
+					type: 'POST',
+					dataType: 'json',
+					data: {
+						name: name,
+						content: content
+					},
+					headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+					success: function(res){
+						if (res.status) {
+							alertify.success(res.message);
+							setTimeout(function(){ window.location = 'list-event'; }, 1500);
+						} else {
+							self.set({ onclosing:function(){ return false; }});
+							if (res.error) {
+								$('.input-name').removeClass('form-control-warning');
+								$('.input-content').removeClass('form-control-warning');
+								$('.input-name').addClass('form-control-danger');
+								$(".input-name").parent('.position-relative').removeClass('has-warning');
+								$(".input-content").parent('.position-relative').removeClass('has-warning');
+								$(".input-name").parent('.position-relative').addClass('has-danger');
+								$("<div class='form-control-feedback'>Sự kiện này đã tồn tại!!</div>").insertAfter('.input-name');
+							} else {
+								$('.input-name').focus();
+								alertify.confirm('Thêm sự kiện thất bại!!! Trang sẽ được tải lại sau 5s', function(){
+									window.location = 'list-event';
+								}).autoOk(5).set('labels', {ok:'OK'});
+							}
+						}
+					}
+				})
+			}
+		},
+		function(){
+			alertify.error('Cancel');
+		}
+	).set('labels', {ok:'Thêm'});
+});

@@ -17,6 +17,9 @@
                 <div class="page-title-subheading">Lưu trữ các sự kiện dùng cho suy diễn</div>
             </div>
         </div>
+        <div class="page-title-actions">
+            <button class="btn btn-info btn-add-event">Thêm sự kiện</button>
+        </div>
     </div>
 </div>
 <div class="tab-content">

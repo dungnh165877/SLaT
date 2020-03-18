@@ -9,15 +9,56 @@ use Mockery\Exception;
 
 class EventController extends Controller
 {
+    private $EVENT_PER_PAGE = 10;
     public function index(){
-        $events = DB::table('events')->paginate(5);
-        return view('listEvent', compact('events'));
+        $events = DB::table('events')->paginate(self::EVENT_PER_PAGE);
+        $name = '';
+        $content = '';
+        return view('listEvent', compact('events', 'content', 'name'));
     }
 
-    public function fetchEvent(Request $request){
+    public function createEvent(Request $request){
         if ($request->ajax()){
-            $events = DB::table('events')->paginate(5);
-            return view('fetchEvent', compact('events'))->render();
+            $content = $request->content;
+            $name = $request->name;
+
+            $event_exists = Event::where('name', $name)->first();
+            if ($event_exists) {
+                return response()->json([
+                    'message'   => 'Sự kiện trên đã tồn tại !!!',
+                    'status' => false,
+                    'error' => 'name'
+                ]);
+            }
+            $event = new Event;
+            $event->name = $name;
+            $event->content = $content;
+            if($event->save()) {
+                return response()->json([
+                    'message'   => 'Thêm sự kiện thành công !!!',
+                    'status' => true
+                ]);
+            } else {
+                return response()->json([
+                    'message'   => 'Thêm sự kiện thất bại !!!',
+                    'status' => false
+                ]);
+            }
+
+        }
+    }
+
+    public function searchEvent(Request $request) {
+        if ($request->ajax()){
+            $content = $request->get('content');
+            $name = $request->get('name');
+            $content_query = str_replace(" ", "%", $content);
+            $name_query = str_replace(" ", "%", $name);
+            $events = DB::table('events')
+                    ->where('content', 'like', '%'.$content_query.'%')
+                    ->where('name', 'like', '%'.$name_query.'%')
+                    ->paginate(self::EVENT_PER_PAGE);
+            return view('fetchEvent', compact('events', 'content', 'name'))->render();
         }
     }
 
