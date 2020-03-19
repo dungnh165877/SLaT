@@ -8,6 +8,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel="icon" href="images/logo-icon.png">
     <title>SLaT - @yield('title')</title>
+    <link rel="stylesheet" href="lib/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/css/summernote-lite.min.css">
     <link rel="stylesheet" href="http://eliteadmin.themedesigner.in/demos/bt4/inverse/dist/css/style.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
@@ -39,6 +41,8 @@
         </div>
     </div>
     <script type="text/javascript" src="lib/js/jquery.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="lib/js/summernote-lite.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/perfect-scrollbar.js"></script>
     <script type="text/javascript" src="js/activeMenu.js"></script>

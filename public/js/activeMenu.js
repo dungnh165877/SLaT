@@ -7,6 +7,4 @@ $(document).ready(function() {
             $(this).parent('li').parent('.mm-collapse').parent('li').addClass('mm-active');
         }
     });
-
-
 });

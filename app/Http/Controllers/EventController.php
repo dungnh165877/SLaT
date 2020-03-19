@@ -9,9 +9,9 @@ use Mockery\Exception;
 
 class EventController extends Controller
 {
-    private $EVENT_PER_PAGE = 10;
+    private static $EVENT_PER_PAGE = 7;
     public function index(){
-        $events = DB::table('events')->paginate(self::EVENT_PER_PAGE);
+        $events = DB::table('events')->paginate(self::$EVENT_PER_PAGE);
         $name = '';
         $content = '';
         return view('listEvent', compact('events', 'content', 'name'));
@@ -57,7 +57,7 @@ class EventController extends Controller
             $events = DB::table('events')
                     ->where('content', 'like', '%'.$content_query.'%')
                     ->where('name', 'like', '%'.$name_query.'%')
-                    ->paginate(self::EVENT_PER_PAGE);
+                    ->paginate(self::$EVENT_PER_PAGE);
             return view('fetchEvent', compact('events', 'content', 'name'))->render();
         }
     }
